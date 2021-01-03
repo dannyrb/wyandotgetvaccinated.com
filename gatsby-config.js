@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: "Wyandot: Get Vaccinated",
+    siteUrl: "https://wyandotgetvaccinated.com"
   },
   plugins: [
     {
