@@ -1,4 +1,5 @@
 import * as React from "react"
+import { navigate } from 'gatsby';
 import clasNames from "classnames"
 import PageLayout from "./../components/PageLayout.js";
 import StepDots from "./../components/StepDots.js";
@@ -20,11 +21,20 @@ const healthConditions = [
 	{ name: '', label: 'None' },
 ];
 
+const _encode = (data) => {
+	return Object.keys(data)
+			.map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+			.join("&");
+}
+
 const FormPage = () => {
 	const maxStep = 2;
 	const [activeStep, setActiveStep] = React.useState(0);
 
-	function nextStep() {
+	function nextStep(event) {
+		console.log(event);
+		event.preventDefault();
+
 		const step = activeStep + 1 > maxStep
 			? maxStep
 			: activeStep + 1;
@@ -33,13 +43,40 @@ const FormPage = () => {
 		window.scrollTo(0, 0);
 	}
 	
-	function previousStep() {
+	function previousStep(event) {
+		event.preventDefault();
+
 		const step = activeStep - 1 < 0
 		? 0
 		: activeStep - 1;
 
 		setActiveStep(step);
 		window.scrollTo(0, 0);
+	}
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		
+
+		console.log('event target: ', event.target);
+
+		const form = event.target;
+		const formValues = Object.values(form).reduce((obj,field) => { obj[field.name] = field.value; return obj }, {});
+
+		console.log(formValues);
+		
+		// This POSTs to Netlify. We can POST to any route, and netlify will pick it up
+		// as a form submission
+		fetch("/", {
+			method: "POST",
+			headers: { "Content-Type": "application/x-www-form-urlencoded" },
+			body: _encode({
+				"form-name": event.target.getAttribute("name"),
+				...formValues
+			})
+		})
+		.then(() => nextStep())
+		.catch(error => alert(error))
 	}
 
   return (
@@ -51,7 +88,7 @@ const FormPage = () => {
 
 						<StepDots activeStep={activeStep} />
 
-						<form method="post" netlify-honeypot="email" data-netlify="true" name="registration">
+						<form method="post" netlify-honeypot="email" data-netlify="true" name="registration" onSubmit={handleSubmit}>
 
 							<div id="form-step-0" className={clasNames({ hidden: activeStep !== 0 })}>
 
@@ -72,8 +109,8 @@ const FormPage = () => {
 									</span>
 								</div>
 
-								<label for="email" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">E-mail</label>
-								<input id="email" type="email" name="email" placeholder="john.doe@company.com" autocomplete="email" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+								<label for="emailaddress" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">E-mail</label>
+								<input id="emailaddress" type="email" name="emailaddress" placeholder="john.doe@company.com" autocomplete="email" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
 						
 								<label for="phone" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Phone Number</label>
 								<input id="phone" type="text" name="phone" placeholder="(555) 555-5555" autocomplete="phone" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
@@ -145,6 +182,8 @@ const FormPage = () => {
 										</div>
 									))}
 								</div>
+
+								<div data-netlify-recaptcha="true"></div>
 		
 								<button 
 									type="submit"
