@@ -7,18 +7,18 @@ import StepDots from "./../components/StepDots.js";
 // https://allvax.lakecohealth.org/s/notice-of-privacy?language=en_US
 
 const healthConditions = [
-	{ name: '', label: 'Cancer' },
-	{ name: '', label: 'COPD' },
-	{ name: '', label: 'Chronic Kidney Disease' },
-	{ name: '', label: 'Immunocompromised State from Solid Organ Transplant' },
-	{ name: '', label: 'Obesity (BMI 30+)' },
-	{ name: '', label: 'Serious Heart Conditions (Heart Failure, Coronary Artery Disease or Cardiomyopathy)' },
-	{ name: '', label: 'Sickle Cell Disease' },
-	{ name: '', label: 'Type 2 Diabetes Mellitus' },
-	{ name: '', label: 'Pregnant' },
-	{ name: '', label: 'Obstructive Pulmonary Disease' },
-	{ name: '', label: 'Smoker' },
-	{ name: '', label: 'None' },
+	{ name: '', value: 'Cancer', label: 'Cancer' },
+	{ name: '', value: 'COPD', label: 'COPD' },
+	{ name: '', value: 'Chronic Kidney Disease', label: 'Chronic Kidney Disease' },
+	{ name: '', value: 'Immunocompromised State from Solid Organ Transplant', label: 'Immunocompromised State from Solid Organ Transplant' },
+	{ name: '', value: 'Obesity', label: 'Obesity (BMI 30+)' },
+	{ name: '', value: 'Serious Heart Conditions', label: 'Serious Heart Conditions (Heart Failure, Coronary Artery Disease or Cardiomyopathy)' },
+	{ name: '', value: 'Sickle Cell Disease', label: 'Sickle Cell Disease' },
+	{ name: '', value: 'Type 2 Diabetes Mellitus', label: 'Type 2 Diabetes Mellitus' },
+	{ name: '', value: 'Pregnant', label: 'Pregnant' },
+	{ name: '', value: 'Obstructive Pulmonary Disease', label: 'Obstructive Pulmonary Disease' },
+	{ name: '', value: 'Smoker', label: 'Smoker' },
+	{ name: '', value: 'None', label: 'None' },
 ];
 
 const _encode = (data) => {
@@ -117,10 +117,11 @@ const FormPage = () => {
 
 								<label for="sex" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Sex</label>
 								<select id="sex" name="sex" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required>
-                  <option>Male</option>
-                  <option>Female</option>
-                  <option>Transgender</option>
-                  <option>Decline to respond</option>
+									<option label="Please select" value="PleaseSelect">Please select</option>
+									<option label="Male" value="Male">Male</option>
+                  <option label="Female" value="Female">Female</option>
+                  <option label="Transgender" value="Transgender">Transgender</option>
+                  <option label="Decline to respond" value="Decline">Decline to respond</option>
                 </select>
 
 								<label for="dateofbirth" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Date of Birth (MM/DD/YYYY)</label>
@@ -152,22 +153,22 @@ const FormPage = () => {
 
 								<label for="live" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Do you live in any of the following?</label>
 								<select id="live" name="live" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required>
-									<option label="Please select" value="PleaseSelect">Please select</option>
-									<option label="Halfway House, Homeless Shelter, Correctional Facility, or Detention Center" value="pcHalfway">Halfway House, Homeless Shelter, Correctional Facility, or Detention Center</option>
-									<option label="Long-Term Care Facility, Assisted Living, or Nursing Home" value="pcLongterm">Long-Term Care Facility, Assisted Living, or Nursing Home</option>
-									<option label="Other congregate living situation" value="pcOtherCongregate">Other congregate living situation</option>
-									<option label="None of the above" value="pcNone">None of the above</option>
+									<option label="Please select" value="Not Selected">Please select</option>
+									<option label="Halfway House, Homeless Shelter, Correctional Facility, or Detention Center" value="Halfway">Halfway House, Homeless Shelter, Correctional Facility, or Detention Center</option>
+									<option label="Long-Term Care Facility, Assisted Living, or Nursing Home" value="Long-Term">Long-Term Care Facility, Assisted Living, or Nursing Home</option>
+									<option label="Other congregate living situation" value="Other Congregate">Other congregate living situation</option>
+									<option label="None of the above" value="None">None of the above</option>
                 </select>
 
 								<label for="work" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Do you work for any of the following?</label>
 								<select id="work" name="work" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required>
-									<option label="Please select" value="PleaseSelect">Please select</option>
-									<option label="EMS" value="pcEssentialWorkerEMS">EMS</option>
-									<option label="Healtchare Facility (Doctor, Nurse, Public health worker)" value="pcHealthcareFacility">Healthcare Facility (Doctor, Nurse, Public health worker)</option>
-									<option label="School Staff" value="pcSchoolStaff">School Staff</option>
-									<option label="Essential Frontline Worker: Food &amp; Agriculture (processing plants), Utilities, Transportation (transit and trucking), Corrections Officer" value="pcEssentialWorkerOther">Essential Frontline Worker: Food &amp; Agriculture (processing plants), Utilities, Transportation (transit and trucking), Corrections Officer</option>
-									<option label="Fire Department" value="pcEssentialWorkerFire_Department">Fire Department</option>
-									<option label="None of the Above" value="pcEssentialWorkerNone">None of the Above</option>
+									<option label="Please select" value="Not Selected">Please select</option>
+									<option label="EMS" value="EMS">EMS</option>
+									<option label="Healtchare Facility (Doctor, Nurse, Public health worker)" value="Healthcare Facility">Healthcare Facility (Doctor, Nurse, Public health worker)</option>
+									<option label="School Staff" value="School Staff">School Staff</option>
+									<option label="Essential Frontline Worker: Food &amp; Agriculture (processing plants), Utilities, Transportation (transit and trucking), Corrections Officer" value="Essential Frontline Worker">Essential Frontline Worker: Food &amp; Agriculture (processing plants), Utilities, Transportation (transit and trucking), Corrections Officer</option>
+									<option label="Fire Department" value="Fire Department">Fire Department</option>
+									<option label="None of the Above" value="None">None of the Above</option>
                 </select>
 
 								<h2 className="font-semibold underline mt-8 mb-4">Do you have any of the following health conditions? (Select all that apply)</h2>
@@ -176,7 +177,7 @@ const FormPage = () => {
 									{healthConditions.map(condition => (
 										<div className="flex flex-col mt-1">
 											<label className="inline-flex items-center">
-												<input type="checkbox" className="form-checkbox h-5 w-5 text-blue-600" />
+												<input type="checkbox" name="conditions" value={condition.value} className="form-checkbox h-5 w-5 text-blue-600" />
 													<span className="text-xs ml-2 text-gray-700">{condition.label}</span>
 											</label>
 										</div>

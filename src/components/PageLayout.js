@@ -1,4 +1,5 @@
 import * as React from "react"
+import PublicHealthHorizontalLogo from "./../images/logo-horizontal.png";
 import PublicHealthLogo from "./PublicHealthLogo.js";
 
 const PageLayout = ({ children }) => {
@@ -24,7 +25,7 @@ const PageLayout = ({ children }) => {
         }}
       >
         <header className="container mx-auto px-8">
-          <img src="https://placehold.it/200x79" />
+            <img src={PublicHealthHorizontalLogo} alt="Wyandot County Public Health Logo" />
         </header>
       </div>
       <div
