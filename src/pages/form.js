@@ -1,149 +1,175 @@
 import * as React from "react"
+import clasNames from "classnames"
+import PageLayout from "./../components/PageLayout.js";
+import StepDots from "./../components/StepDots.js";
 
-// styles
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-const listItemStyles = {
-  fontWeight: "300",
-  fontSize: "24px",
-  maxWidth: "560px",
-}
+// https://allvax.lakecohealth.org/s/notice-of-privacy?language=en_US
 
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: "16px",
-  verticalAlign: "5%",
-}
+const healthConditions = [
+	{ name: '', label: 'Cancer' },
+	{ name: '', label: 'COPD' },
+	{ name: '', label: 'Chronic Kidney Disease' },
+	{ name: '', label: 'Immunocompromised State from Solid Organ Transplant' },
+	{ name: '', label: 'Obesity (BMI 30+)' },
+	{ name: '', label: 'Serious Heart Conditions (Heart Failure, Coronary Artery Disease or Cardiomyopathy)' },
+	{ name: '', label: 'Sickle Cell Disease' },
+	{ name: '', label: 'Type 2 Diabetes Mellitus' },
+	{ name: '', label: 'Pregnant' },
+	{ name: '', label: 'Obstructive Pulmonary Disease' },
+	{ name: '', label: 'Smoker' },
+	{ name: '', label: 'None' },
+];
 
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  marginBottom: 24,
-}
-
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: "14px",
-}
-
-const docLink = {
-  text: "Documentation",
-  url: "https://www.gatsbyjs.com/docs/",
-  color: "#8954A8",
-}
-// data
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
-  },
-  {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
-  },
-  {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
-  },
-  {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#000000",
-  },
-]
-
-// markup
 const FormPage = () => {
+	const maxStep = 2;
+	const [activeStep, setActiveStep] = React.useState(0);
+
+	function nextStep() {
+		const step = activeStep + 1 > maxStep
+			? maxStep
+			: activeStep + 1;
+
+		setActiveStep(step);
+		window.scrollTo(0, 0);
+	}
+	
+	function previousStep() {
+		const step = activeStep - 1 < 0
+		? 0
+		: activeStep - 1;
+
+		setActiveStep(step);
+		window.scrollTo(0, 0);
+	}
+
   return (
-    <main style={pageStyles}>
-      <title>Home Page</title>
-      <h1 style={headingStyles}>
-        Congratulations
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! </span>
-        <span role="img" aria-label="Party popper emojis">
-          🎉🎉🎉
-        </span>
-      </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.js</code> to see this page
-        update in real-time.{" "}
-        <span role="img" aria-label="Sunglasses smiley emoji">
-          😎
-        </span>
-      </p>
-      <ul style={listStyles}>
-        <li style={docLinkStyle}>
-          <a
-            style={linkStyle}
-            href={`${docLink.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-          >
-            {docLink.text}
-          </a>
-        </li>
-        {links.map(link => (
-          <li style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-              >
-                {link.text}
-              </a>
-              <p style={descriptionStyle}>{link.description}</p>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        alt="Gatsby G Logo"
-        src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-      />
-    </main>
+		<PageLayout>
+			<main className="py-16" style={{ backgroundColor: "rgb(239,240,242)" }}>
+				{/* FORM CENTER */}
+				<div className="grid min-h-screen place-items-center">
+					<div className="w-11/12 p-12 pt-6 bg-white sm:w-8/12 md:w-1/2 lg:w-5/12">
+
+						<StepDots activeStep={activeStep} />
+
+						<form method="post" netlify-honeypot="email" data-netlify="true" name="registration">
+
+							<div id="form-step-0" className={clasNames({ hidden: activeStep !== 0 })}>
+
+								<h1 className="text-xl font-semibold mb-2">Enter contact information</h1>
+								<h2 className="text-lg mb-4">Your information</h2>
+
+								<input type="hidden" name="email" />
+								<input type="hidden" name="form-name" value="registration" />
+
+								<div className="flex justify-between gap-3">
+									<span className="w-1/2">
+										<label for="firstname" className="block text-xs font-semibold text-gray-600 uppercase">Firstname</label>
+										<input id="firstname" type="text" name="firstname" placeholder="Jane" autocomplete="given-name" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+									</span>
+									<span className="w-1/2">
+										<label for="lastname" className="block text-xs font-semibold text-gray-600 uppercase">Lastname</label>
+										<input id="lastname" type="text" name="lastname" placeholder="Doe" autocomplete="family-name" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+									</span>
+								</div>
+
+								<label for="email" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">E-mail</label>
+								<input id="email" type="email" name="email" placeholder="john.doe@company.com" autocomplete="email" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+						
+								<label for="phone" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Phone Number</label>
+								<input id="phone" type="text" name="phone" placeholder="(555) 555-5555" autocomplete="phone" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+
+								<label for="sex" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Sex</label>
+								<select id="sex" name="sex" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Transgender</option>
+                  <option>Decline to respond</option>
+                </select>
+
+								<label for="dateofbirth" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Date of Birth (MM/DD/YYYY)</label>
+								<input type="date" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+
+								<label for="zip" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Your ZIP Code</label>
+								<input id="zip" type="text" name="zip" placeholder="43210" autocomplete="zip" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+
+								<div class="flex flex-col mt-6">
+									<label class="inline-flex items-center">
+										<input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" />
+											<span class="text-xs ml-2 text-gray-700">Are you a patient of the Wyandot County Health Department and Community Health Center?</span>
+									</label>
+								</div>
+		
+								<button 
+									className="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none"
+									onClick={nextStep}
+								>
+										Next
+								</button>
+							</div>
+						
+							<div id="form-step-1" className={clasNames({ hidden: activeStep !== 1 })}>
+
+								<h1 className="text-xl font-semibold mb-2">Answer screening questions</h1>
+								<h2 className="text-lg mb-6">Risk factor screening questions</h2>
+								<p className="text-sm mb-6">Please answer these questions the best you can to determine when you can get the vaccine.</p>
+
+								<label for="live" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Do you live in any of the following?</label>
+								<select id="live" name="live" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required>
+									<option label="Please select" value="PleaseSelect">Please select</option>
+									<option label="Halfway House, Homeless Shelter, Correctional Facility, or Detention Center" value="pcHalfway">Halfway House, Homeless Shelter, Correctional Facility, or Detention Center</option>
+									<option label="Long-Term Care Facility, Assisted Living, or Nursing Home" value="pcLongterm">Long-Term Care Facility, Assisted Living, or Nursing Home</option>
+									<option label="Other congregate living situation" value="pcOtherCongregate">Other congregate living situation</option>
+									<option label="None of the above" value="pcNone">None of the above</option>
+                </select>
+
+								<label for="work" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Do you work for any of the following?</label>
+								<select id="work" name="work" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required>
+									<option label="Please select" value="PleaseSelect">Please select</option>
+									<option label="EMS" value="pcEssentialWorkerEMS">EMS</option>
+									<option label="Healtchare Facility (Doctor, Nurse, Public health worker)" value="pcHealthcareFacility">Healthcare Facility (Doctor, Nurse, Public health worker)</option>
+									<option label="School Staff" value="pcSchoolStaff">School Staff</option>
+									<option label="Essential Frontline Worker: Food &amp; Agriculture (processing plants), Utilities, Transportation (transit and trucking), Corrections Officer" value="pcEssentialWorkerOther">Essential Frontline Worker: Food &amp; Agriculture (processing plants), Utilities, Transportation (transit and trucking), Corrections Officer</option>
+									<option label="Fire Department" value="pcEssentialWorkerFire_Department">Fire Department</option>
+									<option label="None of the Above" value="pcEssentialWorkerNone">None of the Above</option>
+                </select>
+
+								<h2 className="font-semibold underline mt-8 mb-4">Do you have any of the following health conditions? (Select all that apply)</h2>
+
+								<div className="flex flex-col mt-6">
+									{healthConditions.map(condition => (
+										<div className="flex flex-col mt-1">
+											<label className="inline-flex items-center">
+												<input type="checkbox" className="form-checkbox h-5 w-5 text-blue-600" />
+													<span className="text-xs ml-2 text-gray-700">{condition.label}</span>
+											</label>
+										</div>
+									))}
+								</div>
+		
+								<button 
+									type="submit"
+									className="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none"
+									onClick={nextStep}
+								>
+										Submit
+								</button>
+							</div>
+
+							<div id="form-step-2" className={clasNames({ hidden: activeStep !== 2 })}>
+								<h1>Done registering</h1>
+								<h2>Thank you for registering your information.</h2>
+
+								<p>There are currently no time slots available to schedule a vaccine.</p>
+								<p>We’ll contact the email address provided as soon as you’re able to schedule a vaccine with a provider near you!</p>
+
+								<a href="#">Questions?</a>
+								<p className="flex justify-between inline-block mt-4 text-xs text-gray-500 cursor-pointer hover:text-black">Register another person</p>
+							</div>
+						</form>
+					</div>
+				</div>
+			</main>
+		</PageLayout>
   )
 }
 
