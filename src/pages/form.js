@@ -84,7 +84,7 @@ const FormPage = () => {
 			})
 		})
 		.then(() => nextStep())
-		.catch(error => alert(error))
+		.catch(error => alert('Form was not able to submit successfully. Please try calling Wyandot Public Health directly.'))
 	}
 
   return (
@@ -123,14 +123,25 @@ const FormPage = () => {
 								<label htmlFor="phone" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Phone Number</label>
 								<input id="phone" type="text" name="phone" placeholder="(555) 555-5555" autoComplete="phone" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
 
+								<div className="flex flex-col mt-6">
+									<label className="inline-flex items-center">
+										<input type="checkbox" name="cantext" value="true" className="form-checkbox h-5 w-5 text-blue-600" />
+											<span className="text-xs ml-2 text-gray-700">Is this number SMS enabled? May we text it?</span>
+									</label>
+									<label className="inline-flex items-center mt-2 mb-2">
+										<input type="checkbox" name="cancall" value="true" className="form-checkbox h-5 w-5 text-blue-600" />
+											<span className="text-xs ml-2 text-gray-700">May we call this number to reach you?</span>
+									</label>
+								</div>
+
 								<label htmlFor="sex" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Sex</label>
 								<select id="sex" name="sex" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required>
 									<option label="Please select" value="PleaseSelect">Please select</option>
 									<option label="Male" value="Male">Male</option>
-                  <option label="Female" value="Female">Female</option>
-                  <option label="Transgender" value="Transgender">Transgender</option>
-                  <option label="Decline to respond" value="Decline">Decline to respond</option>
-                </select>
+									<option label="Female" value="Female">Female</option>
+									<option label="Transgender" value="Transgender">Transgender</option>
+									<option label="Decline to respond" value="Decline">Decline to respond</option>
+								</select>
 
 								<label htmlFor="dateofbirth" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Date of Birth (MM/DD/YYYY)</label>
 								<input type="date" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
@@ -206,12 +217,11 @@ const FormPage = () => {
 								<h1 className="text-xl font-semibold mb-2">Done registering</h1>
 								<h2 className="text-lg mb-6">Thank you for registering your information.</h2>
 
-								<p>There are currently no time slots available to schedule a vaccine.</p>
-								<p>We’ll contact the email address provided as soon as you’re able to schedule a vaccine with a provider near you!</p>
+								<p>We’ll contact the email address or phone number provided as soon as you’re able to schedule a vaccine with a provider near you!</p>
 
 								<Link to="/faq">Questions?</Link>
-								<Link to="/form">
-									<p className="flex justify-between inline-block mt-4 text-xs text-gray-500 cursor-pointer hover:text-black">Register another person</p>
+								<Link to="/" className="flex justify-between inline-block mt-4 text-xs text-gray-500 cursor-pointer hover:text-black">
+									Register another person
 								</Link>
 							</div>
 						</form>
