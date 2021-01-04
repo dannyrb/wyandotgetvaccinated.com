@@ -1,5 +1,5 @@
 import * as React from "react"
-import { navigate } from 'gatsby';
+import { navigate, Link } from 'gatsby';
 import clasNames from "classnames"
 import PageLayout from "./../components/PageLayout.js";
 import StepDots from "./../components/StepDots.js";
@@ -7,18 +7,18 @@ import StepDots from "./../components/StepDots.js";
 // https://allvax.lakecohealth.org/s/notice-of-privacy?language=en_US
 
 const healthConditions = [
-	{ name: '', value: 'Cancer', label: 'Cancer' },
-	{ name: '', value: 'COPD', label: 'COPD' },
-	{ name: '', value: 'Chronic Kidney Disease', label: 'Chronic Kidney Disease' },
-	{ name: '', value: 'Immunocompromised State from Solid Organ Transplant', label: 'Immunocompromised State from Solid Organ Transplant' },
-	{ name: '', value: 'Obesity', label: 'Obesity (BMI 30+)' },
-	{ name: '', value: 'Serious Heart Conditions', label: 'Serious Heart Conditions (Heart Failure, Coronary Artery Disease or Cardiomyopathy)' },
-	{ name: '', value: 'Sickle Cell Disease', label: 'Sickle Cell Disease' },
-	{ name: '', value: 'Type 2 Diabetes Mellitus', label: 'Type 2 Diabetes Mellitus' },
-	{ name: '', value: 'Pregnant', label: 'Pregnant' },
-	{ name: '', value: 'Obstructive Pulmonary Disease', label: 'Obstructive Pulmonary Disease' },
-	{ name: '', value: 'Smoker', label: 'Smoker' },
-	{ name: '', value: 'None', label: 'None' },
+	{ name: 'cancer', value: 'true', label: 'Cancer' },
+	{ name: 'copd', value: 'true', label: 'COPD' },
+	{ name: 'chronickidneydisease', value: 'true', label: 'Chronic Kidney Disease' },
+	{ name: 'immunocompromised', value: 'true', label: 'Immunocompromised State from Solid Organ Transplant' },
+	{ name: 'obesity', value: 'true', label: 'Obesity (BMI 30+)' },
+	{ name: 'heartconditions', value: 'true', label: 'Serious Heart Conditions (Heart Failure, Coronary Artery Disease or Cardiomyopathy)' },
+	{ name: 'sicklecell', value: 'true', label: 'Sickle Cell Disease' },
+	{ name: 'type2diabetes', value: 'true', label: 'Type 2 Diabetes Mellitus' },
+	{ name: 'pregnant', value: 'true', label: 'Pregnant' },
+	{ name: 'pulmonarydisease', value: 'true', label: 'Obstructive Pulmonary Disease' },
+	{ name: 'smoker', value: 'true', label: 'Smoker' },
+	{ name: 'none', value: 'true', label: 'None' },
 ];
 
 const _encode = (data) => {
@@ -32,8 +32,9 @@ const FormPage = () => {
 	const [activeStep, setActiveStep] = React.useState(0);
 
 	function nextStep(event) {
-		console.log(event);
-		event.preventDefault();
+		if(event) {
+			event.preventDefault();
+		}
 
 		const step = activeStep + 1 > maxStep
 			? maxStep
@@ -56,12 +57,19 @@ const FormPage = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		
-
-		console.log('event target: ', event.target);
-
+	
 		const form = event.target;
-		const formValues = Object.values(form).reduce((obj,field) => { obj[field.name] = field.value; return obj }, {});
+		const formValues = Object.values(form).reduce((obj, field) => { 
+			const isCheckbox = field.hasOwnProperty('checked');
+			
+			if(isCheckbox){
+				obj[field.name] = field.checked;
+			} else {
+				obj[field.name] = field.value;
+			}
+
+			return obj;
+		}, {});
 
 		console.log(formValues);
 		
@@ -84,7 +92,7 @@ const FormPage = () => {
 			<main className="py-16" style={{ backgroundColor: "rgb(239,240,242)" }}>
 				{/* FORM CENTER */}
 				<div className="grid min-h-screen place-items-center">
-					<div className="w-11/12 p-12 pt-6 bg-white sm:w-8/12 md:w-1/2 lg:w-5/12">
+					<div className="w-11/12 p-12 pt-6 bg-white md:w-1/2 lg:w-5/12">
 
 						<StepDots activeStep={activeStep} />
 
@@ -100,23 +108,23 @@ const FormPage = () => {
 
 								<div className="flex justify-between gap-3">
 									<span className="w-1/2">
-										<label for="firstname" className="block text-xs font-semibold text-gray-600 uppercase">Firstname</label>
-										<input id="firstname" type="text" name="firstname" placeholder="Jane" autocomplete="given-name" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+										<label htmlFor="firstname" className="block text-xs font-semibold text-gray-600 uppercase">Firstname</label>
+										<input id="firstname" type="text" name="firstname" placeholder="Jane" autoComplete="given-name" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
 									</span>
 									<span className="w-1/2">
-										<label for="lastname" className="block text-xs font-semibold text-gray-600 uppercase">Lastname</label>
-										<input id="lastname" type="text" name="lastname" placeholder="Doe" autocomplete="family-name" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+										<label htmlFor="lastname" className="block text-xs font-semibold text-gray-600 uppercase">Lastname</label>
+										<input id="lastname" type="text" name="lastname" placeholder="Doe" autoComplete="family-name" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
 									</span>
 								</div>
 
-								<label for="emailaddress" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">E-mail</label>
-								<input id="emailaddress" type="email" name="emailaddress" placeholder="john.doe@company.com" autocomplete="email" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+								<label htmlFor="emailaddress" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">E-mail</label>
+								<input id="emailaddress" type="email" name="emailaddress" placeholder="john.doe@company.com" autoComplete="email" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
 						
-								<label for="phone" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Phone Number</label>
-								<input id="phone" type="text" name="phone" placeholder="(555) 555-5555" autocomplete="phone" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+								<label htmlFor="phone" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Phone Number</label>
+								<input id="phone" type="text" name="phone" placeholder="(555) 555-5555" autoComplete="phone" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
 
-								<label for="sex" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Sex</label>
-								<select id="sex" name="sex" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required>
+								<label htmlFor="sex" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Sex</label>
+								<select id="sex" name="sex" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required>
 									<option label="Please select" value="PleaseSelect">Please select</option>
 									<option label="Male" value="Male">Male</option>
                   <option label="Female" value="Female">Female</option>
@@ -124,16 +132,16 @@ const FormPage = () => {
                   <option label="Decline to respond" value="Decline">Decline to respond</option>
                 </select>
 
-								<label for="dateofbirth" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Date of Birth (MM/DD/YYYY)</label>
-								<input type="date" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+								<label htmlFor="dateofbirth" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Date of Birth (MM/DD/YYYY)</label>
+								<input type="date" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
 
-								<label for="zip" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Your ZIP Code</label>
-								<input id="zip" type="text" name="zip" placeholder="43210" autocomplete="zip" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+								<label htmlFor="zip" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Your ZIP Code</label>
+								<input id="zip" type="text" name="zip" placeholder="43210" autoComplete="zip" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
 
-								<div class="flex flex-col mt-6">
-									<label class="inline-flex items-center">
-										<input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" />
-											<span class="text-xs ml-2 text-gray-700">Are you a patient of the Wyandot County Health Department and Community Health Center?</span>
+								<div className="flex flex-col mt-6">
+									<label className="inline-flex items-center">
+										<input type="checkbox" name="current patient" value="true" className="form-checkbox h-5 w-5 text-blue-600" />
+											<span className="text-xs ml-2 text-gray-700">Are you a patient of the Wyandot County Health Department and Community Health Center?</span>
 									</label>
 								</div>
 		
@@ -151,8 +159,8 @@ const FormPage = () => {
 								<h2 className="text-lg mb-6">Risk factor screening questions</h2>
 								<p className="text-sm mb-6">Please answer these questions the best you can to determine when you can get the vaccine.</p>
 
-								<label for="live" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Do you live in any of the following?</label>
-								<select id="live" name="live" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required>
+								<label htmlFor="live" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Do you live in any of the following?</label>
+								<select id="live" name="live" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required>
 									<option label="Please select" value="Not Selected">Please select</option>
 									<option label="Halfway House, Homeless Shelter, Correctional Facility, or Detention Center" value="Halfway">Halfway House, Homeless Shelter, Correctional Facility, or Detention Center</option>
 									<option label="Long-Term Care Facility, Assisted Living, or Nursing Home" value="Long-Term">Long-Term Care Facility, Assisted Living, or Nursing Home</option>
@@ -160,8 +168,8 @@ const FormPage = () => {
 									<option label="None of the above" value="None">None of the above</option>
                 </select>
 
-								<label for="work" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Do you work for any of the following?</label>
-								<select id="work" name="work" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required>
+								<label htmlFor="work" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Do you work for any of the following?</label>
+								<select id="work" name="work" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required>
 									<option label="Please select" value="Not Selected">Please select</option>
 									<option label="EMS" value="EMS">EMS</option>
 									<option label="Healtchare Facility (Doctor, Nurse, Public health worker)" value="Healthcare Facility">Healthcare Facility (Doctor, Nurse, Public health worker)</option>
@@ -175,9 +183,9 @@ const FormPage = () => {
 
 								<div className="flex flex-col mt-6">
 									{healthConditions.map(condition => (
-										<div className="flex flex-col mt-1">
+										<div key={condition.name} className="flex flex-col mt-1">
 											<label className="inline-flex items-center">
-												<input type="checkbox" name="conditions" value={condition.value} className="form-checkbox h-5 w-5 text-blue-600" />
+												<input type="checkbox" name={condition.name} value={condition.value} className="form-checkbox h-5 w-5 text-blue-600" />
 													<span className="text-xs ml-2 text-gray-700">{condition.label}</span>
 											</label>
 										</div>
@@ -195,14 +203,16 @@ const FormPage = () => {
 							</div>
 
 							<div id="form-step-2" className={clasNames({ hidden: activeStep !== 2 })}>
-								<h1>Done registering</h1>
-								<h2>Thank you for registering your information.</h2>
+								<h1 className="text-xl font-semibold mb-2">Done registering</h1>
+								<h2 className="text-lg mb-6">Thank you for registering your information.</h2>
 
 								<p>There are currently no time slots available to schedule a vaccine.</p>
 								<p>We’ll contact the email address provided as soon as you’re able to schedule a vaccine with a provider near you!</p>
 
-								<a href="#">Questions?</a>
-								<p className="flex justify-between inline-block mt-4 text-xs text-gray-500 cursor-pointer hover:text-black">Register another person</p>
+								<Link to="/faq">Questions?</Link>
+								<Link to="/form">
+									<p className="flex justify-between inline-block mt-4 text-xs text-gray-500 cursor-pointer hover:text-black">Register another person</p>
+								</Link>
 							</div>
 						</form>
 					</div>
