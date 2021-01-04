@@ -1,149 +1,140 @@
 import * as React from "react"
 
-// styles
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-const listItemStyles = {
-  fontWeight: "300",
-  fontSize: "24px",
-  maxWidth: "560px",
-}
-
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: "16px",
-  verticalAlign: "5%",
-}
-
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  marginBottom: 24,
-}
-
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: "14px",
-}
-
-const docLink = {
-  text: "Documentation",
-  url: "https://www.gatsbyjs.com/docs/",
-  color: "#8954A8",
-}
-// data
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
-  },
-  {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
-  },
-  {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
-  },
-  {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#000000",
-  },
-]
-
-// markup
 const IndexPage = () => {
   return (
-    <main style={pageStyles}>
-      <title>Home Page</title>
-      <h1 style={headingStyles}>
-        Congratulations
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! </span>
-        <span role="img" aria-label="Party popper emojis">
-          🎉🎉🎉
-        </span>
-      </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.js</code> to see this page
-        update in real-time.{" "}
-        <span role="img" aria-label="Sunglasses smiley emoji">
-          😎
-        </span>
-      </p>
-      <ul style={listStyles}>
-        <li style={docLinkStyle}>
-          <a
-            style={linkStyle}
-            href={`${docLink.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
+    <div style={{
+        minWidth: '100%',
+        overflowX: 'hidden',
+        display: 'grid',
+        gridTemplateColumns: '1fr',
+        gridTemplateRows: 'auto',
+        gridTemplateAreas: `
+          'header'
+          'nav'
+          'main'
+          'footer'
+        `
+      }}
+    >
+      <div
+        className="py-1 bg-white"
+        style={{
+          gridArea: 'header',
+        }}
+      >
+        <header className="container mx-auto px-8">
+          <img src="https://placehold.it/200x79" />
+        </header>
+      </div>
+      <div
+        className="py-2"
+        style={{
+          gridArea: 'nav',
+          backgroundColor: '#237292',
+        }}
+      >
+        
+      </div>
+      
+      {/* We focus here and restrict width further */}
+      <div 
+        style={{
+          gridArea: 'main',
+        }}
+      >
+        <main className="flex flex-col container">
+          {/* REGISTER */}
+          <section className="flex w-full mx-auto py-8 px-56">
+            <div>
+              <h1 className="text-3xl mb-2">Register for the COVID-19 Vaccine</h1>
+              <p className="text-lg">Registration is now open for the COVID-19 vaccine in Wyandot County.
+              To register, click Get Started below.</p>
+
+              <span className="text-sm">You will need a valid email address and contact information for any other people you register.</span>
+              
+              <div>
+                <button>Get Started</button>
+                <a href="#">Questions?</a>
+              </div>
+            </div>
+
+            <div>
+              <img src="https://placehold.it/376x349" />
+            </div>
+          </section>
+
+          {/* HOW IT WORKS */}
+          <section 
+            className="w-full mx-auto py-8 px-56"
+            style={{
+              color: 'rgba(0, 0, 0, 0.8)',
+              backgroundColor: 'rgb(239,240,242)',
+            }}
           >
-            {docLink.text}
-          </a>
-        </li>
-        {links.map(link => (
-          <li style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-              >
-                {link.text}
+            <h3 className="text-xl">COVID-19 Vaccine</h3>
+            <h2 className="text-2xl font-bold">How it works</h2>
+            <div className="flex">
+              <div>1</div>
+              <div>--</div>
+              <div>2</div>
+              <div>--</div>
+              <div>3</div>
+              <div>--</div>
+              <div>4</div>
+            </div>
+          </section>
+        </main>
+      </div>
+      <div 
+        className="text-white p-8"
+        style={{
+          backgroundColor: '#237292',
+          gridArea: 'footer',
+        }}
+      >
+        <footer className="flex container mx-auto">
+          {/* LOGO */}
+          <div className="flex-grow flex-shrink" style={{ width: '200px' }}>
+            <img src="https://placehold.it/200x79" />
+          </div>
+
+
+          {/* CONTACT US */}
+          <div className="flex flex-col flex-grow flex-shrink">
+            <h4 className="text-xl mb-4">Contact Us</h4>
+
+            <div className="mb-1">
+              <a href="https://www.google.com/maps/place/Wyandot+County+Health+Department/@40.8265037,-83.283019,17z/data=!3m1!4b1!4m5!3m4!1s0x88394197a1f03f97:0xf36f1d6703b96fd!8m2!3d40.8265037!4d-83.2808303">
+                127-A South Sandusky Avenue<br />
+                Upper Sandusky, OH 43351
               </a>
-              <p style={descriptionStyle}>{link.description}</p>
+            </div>
+
+            <div className="font-bold mb-1">
+              <a href="tel:+14192943852">(419) 294-3852</a>
+            </div>
+
+            <div className="mb-1">
+              <a href="https://wyandothealth.com">wyandothealth.com</a>
+            </div>
+          </div>
+
+          {/* DISCLAIMER */}
+          <div className="w-44 flex-grow flex-shrink">
+            <h4 className="text-xl mb-4">Disclaimer</h4>
+
+            <span className="text-xs leading-tight">
+              The limited purpose for the Wyandot County Community Vaccination Portal is to provide online vaccination 
+              registration, vaccination appointment scheduling, and information regarding Wyandot County Community Vaccination 
+              Portal services. Wyandot County Community Vaccination Portal does not collect personal information for any purpose
+              other than to serve or respond to you.
             </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        alt="Gatsby G Logo"
-        src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-      />
-    </main>
+          </div>
+
+          {/* SOCIAL */}
+        </footer>
+      </div>
+    </div>
   )
 }
 

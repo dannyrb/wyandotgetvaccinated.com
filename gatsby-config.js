@@ -13,6 +13,7 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
+    `gatsby-plugin-postcss`,
     {
       resolve: "gatsby-plugin-manifest",
       options: {
