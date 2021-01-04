@@ -10,7 +10,7 @@ const CardInformation = () => {
 					</svg>
 				</div>
 				{/* COPY */}
-				<p className="font-semibold dark:text-white block text-lg leading-snug mt-3">
+				<p className="font-semibold dark:text-white block text-xs sm:text-sm lg:text-lg leading-snug mt-3">
 					Enter Information
 				</p>
 			</div>
