@@ -1,4 +1,5 @@
 import * as React from "react"
+import PublicHealthLogo from "./PublicHealthLogo.js";
 
 const PageLayout = ({ children }) => {
   return (
@@ -53,8 +54,10 @@ const PageLayout = ({ children }) => {
       >
         <footer className="flex container mx-auto">
           {/* LOGO */}
-          <div className="flex-grow flex-shrink" style={{ width: '200px' }}>
-            <img src="https://placehold.it/200x79" />
+          <div className="flex-grow flex-shrink pr-8" style={{ maxWidth: '320px' }}>
+            <div style={{ maxWidth: '200px' }}>
+                <PublicHealthLogo />
+            </div>
           </div>
 
 
