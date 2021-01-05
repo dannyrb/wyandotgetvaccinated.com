@@ -69,7 +69,7 @@ const PageLayout = ({ children }) => {
       >
         <footer className="flex flex-wrap container mx-auto">
           {/* LOGO */}
-          <div className="flex-grow flex-shrink pr-8 mt-8" style={{ maxWidth: '320px', minWidth: '220px' }}>
+          <div className="flex-grow flex-shrink pr-8 mt-8" style={{ maxWidth: '320px', minWidth: '200px' }}>
             <div style={{ maxWidth: '200px' }}>
                 <PublicHealthLogo />
             </div>
@@ -77,7 +77,7 @@ const PageLayout = ({ children }) => {
 
 
           {/* CONTACT US */}
-          <div className="flex flex-col flex-grow flex-shrink mt-8" style={{ minWidth: '250px' }}>
+          <div className="flex flex-col flex-grow flex-shrink mt-8" style={{ minWidth: '200px' }}>
             <h4 className="text-xl mb-4">Contact Us</h4>
 
             <div className="mb-1">
@@ -97,7 +97,7 @@ const PageLayout = ({ children }) => {
           </div>
 
           {/* DISCLAIMER */}
-          <div className="w-44 flex-grow flex-shrink mt-8" style={{ minWidth: '250px' }}>
+          <div className="w-44 flex-grow flex-shrink mt-8" style={{ minWidth: '200px' }}>
             <h4 className="text-xl mb-4">Disclaimer</h4>
 
             <span className="text-xs leading-tight">
