@@ -5,7 +5,7 @@ const PrivacyPage = () => {
     return(
         <PageLayout>
             <main className="py-16" style={{ backgroundColor: "rgb(239,240,242)" }}>
-                <div className="container mx-auto px-2 sm:px-8">
+                <div className="container mx-auto px-8">
                     <p className="my-4 text-center font-bold">
                         NOTICE OF PRIVACY PRACTICES<br />
                         EFFECTIVE DATE: January 1st, 2021<br />
@@ -280,7 +280,7 @@ const PrivacyPage = () => {
                         Wyandot County Health Department<br />
                         127-A South Sandusky Avenue<br />
                         Upper Sandusky, OH 43351<br />
-                        <a href="tel:+14192943852">(419) 294-3852</a>
+                        847-377-8000
                     </p>
 
                     <p className="my-4">
