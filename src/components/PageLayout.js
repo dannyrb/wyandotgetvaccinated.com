@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import PublicHealthHorizontalLogo from "./../images/logo-horizontal.png";
+import PublicHealthSimpleLogo from "./../images/logo-square-only.png";
 import PublicHealthLogo from "./PublicHealthLogo.js";
 
 const PageLayout = ({ children }) => {
@@ -26,9 +27,13 @@ const PageLayout = ({ children }) => {
         }}
       >
         <header className="container mx-auto px-8">
-           <Link to="/">
-               <img src={PublicHealthHorizontalLogo} alt="Wyandot County Public Health Logo" />
-            </Link>
+          <Link to="/" className="flex">
+            <img src={PublicHealthSimpleLogo} alt="Wyandot County Public Health Logo" />
+            <div className="flex flex-col brand-font ml-3 mt-2" style={{ color: '#102B60' }}>
+              <span className="text-2xl font-semibold">Wyandot County</span>
+              <span className="text-2xl">Public Health</span>
+            </div>
+          </Link>
         </header>
       </div>
       <div
