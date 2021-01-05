@@ -37,13 +37,13 @@ const PageLayout = ({ children }) => {
         </header>
       </div>
       <div
-        className="py-4 px-8"
+        className="py-4 px-2 sm:px-8"
         style={{
           gridArea: 'nav',
           backgroundColor: '#237292',
         }}
       >
-        <div className="container mx-auto text-white">
+        <div className="container mx-auto text-white text-sm sm:text-base">
             <ul className="flex">
                 <li className="mr-6"><Link to="/form" className="pb-1 hover:text-gray-300" activeStyle={{ borderBottom: 'white 2px solid' }}>Get Started</Link></li>
                 <li className="mr-6"><Link to="/faq" className="pb-1 hover:text-gray-300" activeStyle={{ borderBottom: 'white 2px solid' }}>FAQ</Link></li>
