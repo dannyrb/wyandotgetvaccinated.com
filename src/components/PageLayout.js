@@ -21,7 +21,7 @@ const PageLayout = ({ children }) => {
       }}
     >
       <div
-        className="py-3 px-8 bg-white"
+        className="py-3 px-2 sm:px-8 bg-white"
         style={{
           gridArea: 'header',
         }}
@@ -30,8 +30,8 @@ const PageLayout = ({ children }) => {
           <Link to="/" className="flex">
             <img src={PublicHealthSimpleLogo} alt="Wyandot County Public Health Logo" />
             <div className="flex flex-col brand-font ml-3 mt-2" style={{ color: '#102B60' }}>
-              <span className="text-2xl font-semibold">Wyandot County</span>
-              <span className="text-2xl">Public Health</span>
+              <span className="text-base sm:text-2xl font-semibold">Wyandot County</span>
+              <span className="text-base sm:text-2xl">Public Health</span>
             </div>
           </Link>
         </header>
