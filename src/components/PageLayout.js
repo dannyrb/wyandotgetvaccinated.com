@@ -106,6 +106,10 @@ const PageLayout = ({ children }) => {
               Portal services. Wyandot County Community Vaccination Portal does not collect personal information for any purpose
               other than to serve or respond to you.
             </span>
+
+            <p className="text-xs mt-3">
+              <Link to="/privacy" className="underline">Privacy Policy</Link>
+            </p>
           </div>
 
           {/* SOCIAL */}
