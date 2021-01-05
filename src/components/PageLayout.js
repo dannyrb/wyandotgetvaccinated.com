@@ -61,7 +61,7 @@ const PageLayout = ({ children }) => {
           {children}
       </div>
       <div 
-        className="text-white p-8 pt-0"
+        className="text-white p-2 sm:p-8 pt-0"
         style={{
           backgroundColor: '#237292',
           gridArea: 'footer',
@@ -97,7 +97,7 @@ const PageLayout = ({ children }) => {
           </div>
 
           {/* DISCLAIMER */}
-          <div className="w-44 flex-grow flex-shrink mt-8" style={{ minWidth: '330px' }}>
+          <div className="w-44 flex-grow flex-shrink mt-8" style={{ minWidth: '250px' }}>
             <h4 className="text-xl mb-4">Disclaimer</h4>
 
             <span className="text-xs leading-tight">
