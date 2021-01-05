@@ -31,8 +31,8 @@ const IndexPage = () => {
               <Link className="text-blue-600" to="/faq">Questions?</Link>
             </div>
 
-            <div className="self-center mt-8 mb-8 mx-auto">
-              <div className="w-full" style={{ width: '420px' }}>
+            <div className="self-center mt-8 mb-8 mx-auto" style={{ flexGrow: '1' }}>
+              <div className="w-full" style={{ maxWidth: '500px', minWidth: '200px' }}>
                 <DoctorImage />
               </div>
             </div>
