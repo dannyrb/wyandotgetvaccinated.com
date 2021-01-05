@@ -26,7 +26,7 @@ const PageLayout = ({ children }) => {
           gridArea: 'header',
         }}
       >
-        <header className="container mx-auto px-8">
+        <header className="container mx-auto px-8 py-2">
           <Link to="/" className="flex">
             <img src={PublicHealthSimpleLogo} alt="Wyandot County Public Health Logo" />
             <div className="flex flex-col brand-font ml-3 mt-2" style={{ color: '#102B60' }}>
