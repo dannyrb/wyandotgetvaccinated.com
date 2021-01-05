@@ -276,10 +276,12 @@ const PrivacyPage = () => {
                     <h2 className="font-bold mt-8 mb-4">QUESTIONS AND COMPLAINTS</h2>
                     <p className="my-4">If you want more information about our privacy practices or have questions or concerns please contact us.</p>
 
-                    Wyandot County Health Department
-                    3010 Grand Avenue
-                    Waukegan, IL 60085
-                    847-377-8000
+                    <p>
+                        Wyandot County Health Department<br />
+                        127-A South Sandusky Avenue<br />
+                        Upper Sandusky, OH 43351<br />
+                        <a href="tel:+14192943852">(419) 294-3852</a>
+                    </p>
 
                     <p className="my-4">
                         If you believe your privacy rights have been violated you may file a complaint with us or with the Secretary of the
@@ -296,7 +298,7 @@ const PrivacyPage = () => {
                         847-377-8592, Option 3<br />
                     </p> */}
 
-                    <b>Office of Civil Rights</b>
+                    <b>Office of Civil Rights</b><br/>
                     <b>U.S. Department of Health and Human Services</b>
 
                     <p className="my-4">
