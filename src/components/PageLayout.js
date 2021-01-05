@@ -9,15 +9,6 @@ const PageLayout = ({ children }) => {
     <div style={{
         minWidth: '100%',
         overflowX: 'hidden',
-        display: 'grid',
-        gridTemplateColumns: '1fr',
-        gridTemplateRows: 'auto',
-        gridTemplateAreas: `
-          'header'
-          'nav'
-          'main'
-          'footer'
-        `
       }}
     >
       <div
