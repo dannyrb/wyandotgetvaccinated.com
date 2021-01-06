@@ -118,10 +118,10 @@ const FormPage = () => {
 								</div>
 
 								<label htmlFor="emailaddress" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">E-mail</label>
-								<input id="emailaddress" type="email" name="emailaddress" placeholder="john.doe@company.com" autoComplete="email" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+								<input id="emailaddress" type="email" name="emailaddress" placeholder="john.doe@company.com" autoComplete="email" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" />
 						
 								<label htmlFor="phone" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Phone Number</label>
-								<input id="phone" type="text" name="phone" placeholder="(555) 555-5555" autoComplete="phone" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+								<input id="phone" type="text" name="phone" placeholder="(555) 555-5555" autoComplete="phone" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" />
 
 								<div className="flex flex-col mt-6">
 									<label className="inline-flex items-center">
@@ -135,7 +135,7 @@ const FormPage = () => {
 								</div>
 
 								<label htmlFor="sex" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Sex</label>
-								<select id="sex" name="sex" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required>
+								<select id="sex" name="sex" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner">
 									<option label="Please select" value="PleaseSelect">Please select</option>
 									<option label="Male" value="Male">Male</option>
 									<option label="Female" value="Female">Female</option>
@@ -171,7 +171,7 @@ const FormPage = () => {
 								<p className="text-sm mb-6">Please answer these questions the best you can to determine when you can get the vaccine.</p>
 
 								<label htmlFor="live" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Do you live in any of the following?</label>
-								<select id="live" name="live" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required>
+								<select id="live" name="live" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner">
 									<option label="Please select" value="Not Selected">Please select</option>
 									<option label="Halfway House, Homeless Shelter, Correctional Facility, or Detention Center" value="Halfway">Halfway House, Homeless Shelter, Correctional Facility, or Detention Center</option>
 									<option label="Long-Term Care Facility, Assisted Living, or Nursing Home" value="Long-Term">Long-Term Care Facility, Assisted Living, or Nursing Home</option>
@@ -180,7 +180,7 @@ const FormPage = () => {
                 </select>
 
 								<label htmlFor="work" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Do you work for any of the following?</label>
-								<select id="work" name="work" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required>
+								<select id="work" name="work" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner">
 									<option label="Please select" value="Not Selected">Please select</option>
 									<option label="EMS" value="EMS">EMS</option>
 									<option label="Healtchare Facility (Doctor, Nurse, Public health worker)" value="Healthcare Facility">Healthcare Facility (Doctor, Nurse, Public health worker)</option>
