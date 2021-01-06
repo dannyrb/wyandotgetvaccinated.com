@@ -32,9 +32,34 @@ const FormPage = () => {
 	const maxStep = 2;
 	const [activeStep, setActiveStep] = React.useState(0);
 
+	function validityChecker () {
+		const inputs = document.querySelectorAll('input');
+		let formIsInvalid = false;
+
+		inputs.forEach(input => {
+			if(!input.validity.valid) {
+				formIsInvalid = true;
+			}
+		});
+
+		if(formIsInvalid) {
+			window.alert('Firstname, lastname, birth date, and zip code are required fields to advance.');
+		}
+
+		return formIsInvalid;
+	}
+
 	function nextStep(event) {
 		if(event) {
 			event.preventDefault();
+		}
+
+		if(activeStep === 0) {
+			const formIsInvalid = validityChecker();
+
+			if(formIsInvalid) {
+				return;
+			}
 		}
 
 		const step = activeStep + 1 > maxStep
@@ -71,8 +96,6 @@ const FormPage = () => {
 
 			return obj;
 		}, {});
-
-		console.log(formValues);
 		
 		// This POSTs to Netlify. We can POST to any route, and netlify will pick it up
 		// as a form submission
@@ -221,7 +244,7 @@ const FormPage = () => {
 								<p>We’ll contact the email address or phone number provided as soon as you’re able to schedule a vaccine with a provider near you!</p>
 
 								<Link to="/faq" className="text-blue-600 my-2">Questions?</Link>
-								<Link to="/" className="flex justify-between inline-block mt-4 text-xs text-gray-500 cursor-pointer hover:text-black">
+								<Link to="/" className="flex justify-between inline-block mt-4 text-gray-500 cursor-pointer hover:text-black">
 									Register another person
 								</Link>
 							</div>
