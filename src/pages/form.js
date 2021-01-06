@@ -3,6 +3,7 @@ import { navigate, Link } from 'gatsby';
 import clasNames from "classnames"
 import PageLayout from "./../components/PageLayout.js";
 import StepDots from "./../components/StepDots.js";
+import CustomDateInput from './../components/CustomDateInput.js';
 
 // https://allvax.lakecohealth.org/s/notice-of-privacy?language=en_US
 
@@ -144,7 +145,7 @@ const FormPage = () => {
 								</select>
 
 								<label htmlFor="dateofbirth" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Date of Birth (MM/DD/YYYY)</label>
-								<input type="date" name="dateofbirth" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+								<CustomDateInput name="dateofbirth" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
 
 								<label htmlFor="zip" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Your ZIP Code</label>
 								<input id="zip" type="text" name="zip" placeholder="43210" autoComplete="zip" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
