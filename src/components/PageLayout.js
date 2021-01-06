@@ -1,11 +1,16 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import Helmet from "react-helmet"
 import PublicHealthHorizontalLogo from "./../images/logo-horizontal.png";
 import PublicHealthSimpleLogo from "./../images/logo-square-only.png";
 import PublicHealthLogo from "./PublicHealthLogo.js";
 
 const PageLayout = ({ children }) => {
   return (
+    <>
+    <Helmet>
+      <title>Wyandot: Get Vaccinated</title>
+    </Helmet>
     <div style={{
         minWidth: '100%',
         overflowX: 'hidden',
@@ -106,6 +111,7 @@ const PageLayout = ({ children }) => {
         </footer>
       </div>
     </div>
+    </>
   )
 }
 
