@@ -10,7 +10,7 @@ const healthConditions = [
 	{ name: 'cancer', value: 'true', label: 'Cancer' },
 	{ name: 'copd', value: 'true', label: 'COPD' },
 	{ name: 'chronickidneydisease', value: 'true', label: 'Chronic Kidney Disease' },
-	{ name: 'immunocompromised', value: 'true', label: 'Immunocompromised State from Solid Organ Transplant' },
+	{ name: 'immunocompromised', value: 'true', label: 'Immunocompromised State' },
 	{ name: 'obesity', value: 'true', label: 'Obesity (BMI 30+)' },
 	{ name: 'heartconditions', value: 'true', label: 'Serious Heart Conditions (Heart Failure, Coronary Artery Disease or Cardiomyopathy)' },
 	{ name: 'sicklecell', value: 'true', label: 'Sickle Cell Disease' },
@@ -183,7 +183,7 @@ const FormPage = () => {
 								<select id="work" name="work" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner">
 									<option label="Please select" value="Not Selected">Please select</option>
 									<option label="EMS" value="EMS">EMS</option>
-									<option label="Healtchare Facility (Doctor, Nurse, Public health worker)" value="Healthcare Facility">Healthcare Facility (Doctor, Nurse, Public health worker)</option>
+									<option label="Healthcare Facility (Doctor, Nurse, Public health worker)" value="Healthcare Facility">Healthcare Facility (Doctor, Nurse, Public health worker)</option>
 									<option label="School Staff" value="School Staff">School Staff</option>
 									<option label="Essential Frontline Worker: Food &amp; Agriculture (processing plants), Utilities, Transportation (transit and trucking), Corrections Officer" value="Essential Frontline Worker">Essential Frontline Worker: Food &amp; Agriculture (processing plants), Utilities, Transportation (transit and trucking), Corrections Officer</option>
 									<option label="Fire Department" value="Fire Department">Fire Department</option>
