@@ -235,9 +235,9 @@ const FormPage = () => {
 								<p className="mb-2">
 									We’ll contact the email address or phone number provided as soon as you’re able to schedule a vaccine
 									with a provider near you!<br /><br />We prioritize vaccinations per Ohio and CDC guidelines. To learn more about
-									our current criteria/phase, you can monitor our
-									<a className="text-blue-600 underline hover:text-blue-300" href="https://www.wyandothealth.com/category/news/">news feed</a> or 
-									<a className="text-blue-600 underline hover:text-blue-300" href="https://www.facebook.com/wyandotcountypublichealth">Facebook page</a>.
+									our current criteria/phase, you can monitor our 
+									<a target="_blank" className="text-blue-600 underline hover:text-blue-300" href="https://www.wyandothealth.com/category/news/"> news feed</a> or 
+									<a target="_blank" className="text-blue-600 underline hover:text-blue-300" href="https://www.facebook.com/wyandotcountypublichealth"> Facebook page</a>.
 								</p>
 
 								<Link to="/faq" className="my-2 text-blue-600 underline hover:text-blue-300">Questions? Read our FAQ</Link>
