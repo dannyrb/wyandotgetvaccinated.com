@@ -69,17 +69,6 @@ const FormPage = () => {
 		setActiveStep(step);
 		window.scrollTo(0, 0);
 	}
-	
-	function previousStep(event) {
-		event.preventDefault();
-
-		const step = activeStep - 1 < 0
-		? 0
-		: activeStep - 1;
-
-		setActiveStep(step);
-		window.scrollTo(0, 0);
-	}
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -124,8 +113,8 @@ const FormPage = () => {
 
 							<div id="form-step-0" className={clasNames({ hidden: activeStep !== 0 })}>
 
-								<h1 className="text-xl font-semibold mb-2">Enter contact information</h1>
-								<h2 className="text-lg mb-4">Your information</h2>
+								<h1 className="mb-2 text-xl font-semibold">Enter contact information</h1>
+								<h2 className="mb-4 text-lg">Your information</h2>
 
 								<input type="hidden" name="email" />
 								<input type="hidden" name="form-name" value="registration" />
@@ -149,12 +138,12 @@ const FormPage = () => {
 
 								<div className="flex flex-col mt-6">
 									<label className="inline-flex items-center">
-										<input type="checkbox" name="cantext" value="true" className="form-checkbox h-5 w-5 text-blue-600" />
-											<span className="text-xs ml-2 text-gray-700">Is this number SMS enabled? May we text it?</span>
+										<input type="checkbox" name="cantext" value="true" className="w-5 h-5 text-blue-600 form-checkbox" />
+											<span className="ml-2 text-xs text-gray-700">Is this number SMS enabled? May we text it?</span>
 									</label>
 									<label className="inline-flex items-center mt-2 mb-2">
-										<input type="checkbox" name="cancall" value="true" className="form-checkbox h-5 w-5 text-blue-600" />
-											<span className="text-xs ml-2 text-gray-700">May we call this number to reach you?</span>
+										<input type="checkbox" name="cancall" value="true" className="w-5 h-5 text-blue-600 form-checkbox" />
+											<span className="ml-2 text-xs text-gray-700">May we call this number to reach you?</span>
 									</label>
 								</div>
 
@@ -175,8 +164,8 @@ const FormPage = () => {
 
 								<div className="flex flex-col mt-6">
 									<label className="inline-flex items-center">
-										<input type="checkbox" name="current patient" value="true" className="form-checkbox h-5 w-5 text-blue-600" />
-											<span className="text-xs ml-2 text-gray-700">Are you a patient of the Wyandot County Health Department and Community Health Center?</span>
+										<input type="checkbox" name="current patient" value="true" className="w-5 h-5 text-blue-600 form-checkbox" />
+											<span className="ml-2 text-xs text-gray-700">Are you a patient of the Wyandot County Health Department and Community Health Center?</span>
 									</label>
 								</div>
 		
@@ -190,9 +179,9 @@ const FormPage = () => {
 						
 							<div id="form-step-1" className={clasNames({ hidden: activeStep !== 1 })}>
 
-								<h1 className="text-xl font-semibold mb-2">Answer screening questions</h1>
-								<h2 className="text-lg mb-6">Risk factor screening questions</h2>
-								<p className="text-sm mb-6">Please answer these questions the best you can to determine when you can get the vaccine.</p>
+								<h1 className="mb-2 text-xl font-semibold">Answer screening questions</h1>
+								<h2 className="mb-6 text-lg">Risk factor screening questions</h2>
+								<p className="mb-6 text-sm">Please answer these questions the best you can to determine when you can get the vaccine.</p>
 
 								<label htmlFor="live" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Do you live in any of the following?</label>
 								<select id="live" name="live" className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner">
@@ -214,14 +203,14 @@ const FormPage = () => {
 									<option label="None of the Above" value="None">None of the Above</option>
                 </select>
 
-								<h2 className="font-semibold underline mt-8 mb-4">Do you have any of the following health conditions? (Select all that apply)</h2>
+								<h2 className="mt-8 mb-4 font-semibold underline">Do you have any of the following health conditions? (Select all that apply)</h2>
 
 								<div className="flex flex-col mt-6">
 									{healthConditions.map(condition => (
 										<div key={condition.name} className="flex flex-col mt-1">
 											<label className="inline-flex items-center">
-												<input type="checkbox" name={condition.name} value={condition.value} className="form-checkbox h-5 w-5 text-blue-600" />
-													<span className="text-xs ml-2 text-gray-700">{condition.label}</span>
+												<input type="checkbox" name={condition.name} value={condition.value} className="w-5 h-5 text-blue-600 form-checkbox" />
+													<span className="ml-2 text-xs text-gray-700">{condition.label}</span>
 											</label>
 										</div>
 									))}
@@ -238,13 +227,21 @@ const FormPage = () => {
 							</div>
 
 							<div id="form-step-2" className={clasNames({ hidden: activeStep !== 2 })}>
-								<h1 className="text-xl font-semibold mb-2">Done registering</h1>
-								<h2 className="text-lg mb-6">Thank you for registering your information.</h2>
+								<h1 className="mb-2 text-xl font-semibold">Done registering</h1>
+								<h2 className="mb-6 text-lg">Thank you for registering your information.</h2>
 
-								<p>We’ll contact the email address or phone number provided as soon as you’re able to schedule a vaccine with a provider near you!</p>
+								<p className="mb-2 underline">There is no need to call to verify that this form was submitted successfully.</p>
 
-								<Link to="/faq" className="text-blue-600 my-2">Questions?</Link>
-								<Link to="/" className="flex justify-between inline-block mt-4 text-gray-500 cursor-pointer hover:text-black">
+								<p className="mb-2">
+									We’ll contact the email address or phone number provided as soon as you’re able to schedule a vaccine
+									with a provider near you!<br /><br />We prioritize vaccinations per Ohio and CDC guidelines. To learn more about
+									our current criteria/phase, you can monitor our
+									<a className="text-blue-600 underline hover:text-blue-300" href="https://www.wyandothealth.com/category/news/">news feed</a> or 
+									<a className="text-blue-600 underline hover:text-blue-300" href="https://www.facebook.com/wyandotcountypublichealth">Facebook page</a>.
+								</p>
+
+								<Link to="/faq" className="my-2 text-blue-600 underline hover:text-blue-300">Questions? Read our FAQ</Link>
+								<Link to="/" className="flex justify-between mt-4 text-blue-600 underline cursor-pointer hover:text-blue-300">
 									Register another person
 								</Link>
 							</div>
