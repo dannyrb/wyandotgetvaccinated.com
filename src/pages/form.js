@@ -232,7 +232,7 @@ const FormPage = () => {
 
 								<p className="mb-2 underline">There is no need to call to verify that this form was submitted successfully.</p>
 
-								<p className="mb-2">
+								<p className="mb-6">
 									We’ll contact the email address or phone number provided as soon as you’re able to schedule a vaccine
 									with a provider near you!<br /><br />We prioritize vaccinations per Ohio and CDC guidelines. To learn more about
 									our current criteria/phase, you can monitor our 
