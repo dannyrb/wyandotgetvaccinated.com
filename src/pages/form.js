@@ -241,7 +241,7 @@ const FormPage = () => {
 								</p>
 
 								<Link to="/faq" className="my-2 text-blue-600 underline hover:text-blue-300">Questions? Read our FAQ</Link>
-								<Link to="/" className="flex justify-between mt-4 text-blue-600 underline cursor-pointer hover:text-blue-300">
+								<Link to="/" className="flex justify-between mt-4 text-gray-600 underline cursor-pointer hover:text-black">
 									Register another person
 								</Link>
 							</div>
