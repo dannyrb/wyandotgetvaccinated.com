@@ -207,12 +207,20 @@ const FormPage = () => {
 
 								<div className="flex flex-col mt-6">
 									{healthConditions.map(condition => (
-										<div key={condition.name} className="flex flex-col mt-1">
-											<label className="inline-flex items-center">
-												<input type="checkbox" name={condition.name} value={condition.value} className="w-5 h-5 text-blue-600 form-checkbox" />
-													<span className="ml-2 text-xs text-gray-700">{condition.label}</span>
-											</label>
-										</div>
+										(condition.name === "pulmonarydisease")
+										? 
+										(
+											<input type="hidden" name="pulmonarydisease" value="false" />
+										)
+										: 
+										(
+											<div key={condition.name} className="flex flex-col mt-1">
+												<label className="inline-flex items-center">
+													<input type="checkbox" name={condition.name} value={condition.value} className="w-5 h-5 text-blue-600 form-checkbox" />
+														<span className="ml-2 text-xs text-gray-700">{condition.label}</span>
+												</label>
+											</div>
+										)
 									))}
 								</div>
 
