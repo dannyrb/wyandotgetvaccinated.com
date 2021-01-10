@@ -15,7 +15,7 @@ const healthConditions = [
 	{ name: 'obesity', value: 'true', label: 'Obesity (BMI 30+)' },
 	{ name: 'heartconditions', value: 'true', label: 'Serious Heart Conditions (Heart Failure, Coronary Artery Disease or Cardiomyopathy)' },
 	{ name: 'sicklecell', value: 'true', label: 'Sickle Cell Disease' },
-	{ name: 'type2diabetes', value: 'true', label: 'Type 2 Diabetes Mellitus' },
+	{ name: 'type2diabetes', value: 'true', label: 'Diabetes' },
 	{ name: 'pregnant', value: 'true', label: 'Pregnant' },
 	{ name: 'pulmonarydisease', value: 'true', label: 'Obstructive Pulmonary Disease' },
 	{ name: 'smoker', value: 'true', label: 'Smoker' },
